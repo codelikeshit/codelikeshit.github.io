@@ -8,16 +8,19 @@ title: Rails and Git hooks
 ###Procedure:
 
 * Enter into hooks directory in your projects.
+
 ```
 cd myawesomeproject/.git/hooks
 ```
 
 * Create a post-merge file in hooks directory.
+
 ```
 touch post-merge
 ```
 
 * Open the post-merge file.
+
 ```
 vim post-merge
 ```
