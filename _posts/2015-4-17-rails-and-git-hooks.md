@@ -8,23 +8,23 @@ title: Rails and Git hooks
 ###Procedure:
 
 * Enter into hooks directory in your projects.
-```shell
+```
 cd myawesomeproject/.git/hooks
 ```
 
 * Create a post-merge file in hooks directory.
-```shell
+```
 touch post-merge
 ```
 
 * Open the post-merge file.
-```shell
+```
 vim post-merge
 ```
 
 * Add the following script to your file:
 
-```shell
+```
 #/usr/bin/env bash
 changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
@@ -46,7 +46,7 @@ check_and_run_migrations
 * Save and exit.
 * File is a shell script so we need to make it executable.
 
-```shell
+```
 chmod +x post-merge
 ```
 
