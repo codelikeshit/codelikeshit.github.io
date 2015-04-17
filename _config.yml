@@ -23,7 +23,7 @@ footer-links:
   flickr:
   github: peeyushsingla
   instagram:
-  linkedin:
+  linkedin: pub/peeyush-singla/48/1b2/667/
   pinterest:
   rss: # just type anything here for a working RSS icon, make sure you set the "url" above!
   twitter: peeyush_singla
@@ -35,7 +35,7 @@ footer-links:
 disqus:
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics:
+google_analytics: UA-46147283-2
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
