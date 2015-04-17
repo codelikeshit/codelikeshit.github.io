@@ -33,11 +33,11 @@ changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
 echo $changed_files
 
-check_run() {
+check_and_run_bundle() {
   echo "$changed_files" | grep -E --quiet "$1" && eval "$2"
 }
 
-check_run Gemfile "bundle install"
+check_and_run_bundle Gemfile "bundle install"
 
 check_and_run_migrations(){
   git diff --name-only HEAD@{1} HEAD | grep -E "db/migrate" && eval "rake db:migrate"
