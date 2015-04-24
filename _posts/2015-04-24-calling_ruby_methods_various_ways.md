@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Calling Ruby methods in various ways.
+title: Calling Ruby methods various ways.
 ---
 
 ###Calling methods for a object other than `dot operator`.
@@ -59,3 +59,5 @@ Inside method 1
 
 
 * The major difference between `dot`, `send` and `method(:name).call` is last two will call the private, protected methods as well.
+
+####Happy coding :)
