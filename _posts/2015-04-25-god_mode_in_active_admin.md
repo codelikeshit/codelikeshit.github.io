@@ -1,6 +1,6 @@
 ---
 layout: post
-title: GOD mode in active admin.
+title: GOD mode with Active admin gem.
 ---
 
 ### Implementing *GOD mode* in <a href="https://github.com/activeadmin/activeadmin" target="_blank">Active Admin</a>
