@@ -3,7 +3,7 @@ layout: post
 title: Rails and Git hooks
 ---
 
-### Automate your repeated task like `bundle install` and `rake db:migrate` on every pull.
+### Automate your repeated task like **bundle install** and **rake db:migrate** on every pull.
 
 ###Procedure:
 
