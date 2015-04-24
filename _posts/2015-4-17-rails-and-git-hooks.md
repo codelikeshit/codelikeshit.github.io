@@ -56,5 +56,5 @@ chmod +x post-merge
 * From now on everypull script will check if any new dependency(Gem) or new migration it will be resolved automatically.
 
 
-####Happy coding :)
+
 

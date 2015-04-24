@@ -63,4 +63,4 @@ Inside method 1
 
 * The major difference between `dot`, `send` and `method(:name).call` is last two will call the private, protected methods as well.
 
-####Happy coding :)
+
