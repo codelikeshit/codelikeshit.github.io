@@ -4,10 +4,12 @@ title: About
 permalink: /about/
 ---
 
+* ROR developer with zeal to understand the technology.
+* Having expeirence in the complete software development life cycle including conceptualization,  writing specifications, design, development, testing and deployment.
+* Amature blogger.
+
 
 ### Contact me
-* New developer who loves Ruby.
-* Amature blogger.
-* Rails developer.
-
 [peeyush.singla@gmail.com](mailto:peeyush.singla@gmail.com)
+
+[Linkedin](http://linkedin.com/in//pub/peeyush-singla/48/1b2/667)
