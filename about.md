@@ -12,4 +12,6 @@ permalink: /about/
 ### Contact me
 [peeyush.singla@gmail.com](mailto:peeyush.singla@gmail.com)
 
-[Linkedin](http://linkedin.com/in//pub/peeyush-singla/48/1b2/667)
+[Linkedin](https://in.linkedin.com/pub/peeyush-singla/48/1b2/667)
+
+[Rails Contributions](http://contributors.rubyonrails.org/contributors/peeyush/commits)
