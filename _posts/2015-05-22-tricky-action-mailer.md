@@ -4,7 +4,7 @@ title: Tricky Rails Mailer
 tags: [Rails, Ruby, ActionMailer]
 ---
 
-###How Rails ActionMailer trick the methods
+###How Rails ActionMailer trick methods
 
 
 * <a href="http://guides.rubyonrails.org/action_mailer_basics.html" target="_blank">ActionMailer</a> in Rails, yooo its awesome it do tons of stuff and makes my life easy while it comes to sending email from Rails app.
