@@ -16,20 +16,7 @@ tags: [Rails, Ruby, ActionMailer]
 
     * I was writing some code to send emails after user signs up:-
 
-      Mailer class:-
-
-      ```
-    class MyAwesomeMailer < ActionMailer::Base
-
-      def send_email(_user, _message)
-        @user    = _user
-        @message = _message
-      end
-
-    end
-      ```
-
-      Model class:-
+    Model class:-
 
       ```
     class User < ActiveRecord::Base
@@ -37,15 +24,30 @@ tags: [Rails, Ruby, ActionMailer]
       after_commit :notify_user, on: :create
 
       def notify_user
-        MyAwesomeMailer.send_email(self, "Welcome to Interakt.co").deliver_now
+        MyAwesomeMailer.send_welcome_email(self, "Welcome to Interakt.co").deliver_now
+      end
+
+    end
+      ```
+      Mailer class:-
+
+      ```
+    class MyAwesomeMailer < ActionMailer::Base
+
+      def send_welcome_email(_user, _message)
+        @user    = _user
+        @message = _message
       end
 
     end
       ```
 
-    * All of sudden a bulb flashed over my head and I realized ```send_email``` is an instance method and I called a class method here MyAwesomeMailer.send_email(self, "Welcome to Interakt.co").deliver_now :p.
-
-    * I was confused and asked from couple of my senior but didn't get exact answer, one tried to guess and said it might be using method_missing hook of Ruby.
+    * All of sudden a bulb flashed over my head and I realized ```send_welcome_email``` is an ```instance method``` and I called a ```class method here```. 
+    
+    ``` 
+      MyAwesomeMailer.send_welcome_email(self, "Welcome to Interakt.co").deliver_now
+    ```
+    * I was confused and asked from couple of my senior but didn't get exact answer, one tried to guess and said it might be using ```method_missing``` hook of Ruby.
 
 * ### Getting my Hands Dirty:-
 
@@ -53,10 +55,10 @@ tags: [Rails, Ruby, ActionMailer]
 
     * Once I cloned the <a href="http://github.com/rails/rails" target="_blank">Rails source</a> code I jumped directly into <a href="https://github.com/rails/rails/blob/master/actionmailer/lib/action_mailer/base.rb " target="_blank">ActionMailer::Base</a> module and started browsing it.
 
-    * First thing I tried with it was calling ```send_email``` like a instance method but it didn't work, go and try it you will get the same exception.
+    * First thing I tried with it was calling ```send_welcome_email``` like a instance method but it didn't work, go and try it you will get the same exception.
 
         ```
-        MyAwesomeMailer.new.send_email(self, "Welcome to Interakt.co").deliver_now
+        MyAwesomeMailer.new.send_welcome_email(self, "Welcome to Interakt.co").deliver_now
 
         NoMethodError: private method `new' called for MyAwesomeMailer:Class
 
@@ -64,9 +66,9 @@ tags: [Rails, Ruby, ActionMailer]
 
 * ### Make class method private:-
 
-    * RAils mark new method of mailer as private method so you can't call it using dot(.) operator.
+    * Rails mark new method of mailer as ```private method``` so you can't call it using dot(.) operator.
     
-    * Another thing that I analyzed was new is a class method and if I use private or protected it will not work for class methods.
+    * Another thing that I analyzed was new is a ```class method``` and if I use ```private``` or ```protected``` it will not work for class methods.
 
     e.g:-
 
@@ -92,10 +94,10 @@ tags: [Rails, Ruby, ActionMailer]
       ==> I am still public method
       ```
 
-    * Now call MyAwesomeClass.my_class_method and it will work and its not a private method, now the question is how to make class level methods private.
+    * Callling ```MyAwesomeClass.my_class_method``` and it will work and its not a private method, it cleary indicates its not set as private method. Now the question is how to make class level methods private.
 
 
-    * I came across a new method private_class_method for ruby, usage:-
+    * I came across a new method ```private_class_method``` for ruby, usage:-
 
       ```
       private_class_method :new
@@ -105,19 +107,19 @@ tags: [Rails, Ruby, ActionMailer]
 
 * ###Getting the idea:-
 
-    * Coming back to our point when I call a class method how it calls the instance one
+    * Coming back to our point when I call a class method how it calls the instance method with the same name.
 
-    * Finally after messing my head around for some time I got the answer and that is its basically using method_missing hook of ruby and doing the stuff in backend.
+    * Finally after messing my head around for some time I got the answer and that is its basically using ```method_missing``` hook of ruby and doing the stuff in backend.
 
 * ###Flow(How it works internally):-
 
     * When you call a class method e.g:-
 
     ```
-    MyAwesomeMailer.send_email(self, "Welcome to Interakt.co").deliver_now
+    MyAwesomeMailer.send_welcome_email(self, "Welcome to Interakt.co").deliver_now
     ```
 
-    *  first thing is that(Class Method) method is not available there so method_missing will be called and this is the code inside method_missing hook.
+    *  first thing is that(Class Method) method is not available there so ```method_missing``` will be called and this is the code inside ```method_missing``` hook method.
 
     ```
     class Base < AbstractController::Base
@@ -164,8 +166,7 @@ tags: [Rails, Ruby, ActionMailer]
 
     ```
 
-    * Here after initializing the object, when you call deliver_now to deliver your email and it calls message method wich call __getobj__ method.
-
+    * Here after initializing the object, when you call ```deliver_now``` to deliver your email and it calls message method wich call ```__getobj__``` method.
 
 
     ```  
@@ -174,8 +175,10 @@ tags: [Rails, Ruby, ActionMailer]
     end
     ```
 
-    * Here @mailer is containing you class i.e MyAwesomeMailer, @mail_method is containing method_name you called.
-    * This code is basically creating a new instance of your MyAwesomeMailer class and running the method you called on it.
-    * One thing I am still trying to figure out is why its this way :p
+    * Here ```@mailer``` is containing you class i.e MyAwesomeMailer, ```@mail_method``` is containing method_name you called.
+    * This code is basically creating a new instance of your ```MyAwesomeMailer``` class and running the method you called on it.
+
+
+One conclusion of all that is Rails is doing a lot of magic behind the scene and helping developers to focus on business logic. Its very easy to begin with but it take some efforts to master in & out of it :).
 
 
