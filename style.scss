@@ -18,9 +18,11 @@ html {
 }
 
 body {
-	background: $white;
-  font: 18px/1.4 $helvetica;
+  background: $white;
+  font: 16px/1.5 $helvetica;
   color: $darkGray;
+  font-weight: 300;
+  color: #444;
 }
 
 .container {
@@ -34,11 +36,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
   color: $darkerGray;
   font-weight: bold;
-
   line-height: 1.7;
   margin: 1em 0 15px;
   padding: 0;
-
   @include mobile {
     line-height: 1.4;
   }
@@ -56,11 +56,11 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 16px;
   color: $gray;
 }
 
@@ -165,10 +165,9 @@ img {
 
 .site-avatar {
   float: left;
-  width: 70px;
-  height: 70px;
+  width: auto;
+  height: 46px;
   margin-right: 15px;
-
   @include mobile {
     float: none;
     display: block;
@@ -176,7 +175,8 @@ img {
   }
 
   img {
-    border-radius: 5px;
+    height: 100%;
+    width: auto;
   }
 }
 
@@ -212,7 +212,7 @@ img {
 
 nav {
   float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-top: 8px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 18px;
 
@@ -260,7 +260,18 @@ nav {
     font-size: 22px;
     font-style: italic;
   }
-
+  h1{
+      font-size: 24px;
+      margin-bottom: 0;
+  }
+  .entry{
+      & > h3{
+          font-size: 16px;
+          font-weight: 300;
+          margin-top: 0;
+          color: #888;
+      }
+  }
   .comments {
     margin-top: 10px;
   }
@@ -273,9 +284,7 @@ nav {
 
 .wrapper-footer {
   margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  background-color: $blue;
 }
 
 footer {
