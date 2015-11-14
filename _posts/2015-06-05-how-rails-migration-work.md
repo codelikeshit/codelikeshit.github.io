@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rails migrations Internals :)
+title: Magical Rails migrations
 ---
 ###Rails migration is one of the best tools provided in Rails that helps you to handle database very efficiently. Here I am gonna add some internal stuff that Rails do under the hood.
 
