@@ -71,6 +71,6 @@ title: Live Reload in Rails
 
 * Go and change any JS/CSS or *.erb file it will reload the browser page and JS and CSS will be reloaded without even reloading the page.
 
-PS: There is an <a href="http://livereload.com/" target="_blank"> Livereload app</a> for Mac as well, Its paid but yeah its faster that this setup. :) 
+PS: There is a <a href="http://livereload.com/" target="_blank"> Livereload app</a> for Mac as well, Its paid but yeah its faster than this setup. :) 
 
 
