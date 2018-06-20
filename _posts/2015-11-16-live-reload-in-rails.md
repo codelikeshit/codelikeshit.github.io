@@ -2,15 +2,16 @@
 layout: post
 title: Live Reload in Rails
 ---
-###Live Reload is basically updating your stylesheets and views when you are changing your files without reloading. Its a great way to be more productive while you just need to focus on your code and rest is handled by scripts to show you the changes. 
+
+###Live Reload is basically updating your stylesheets and views when you are changing your files without reloading. Its a great way to be more productive while you just need to focus on your code and rest is handled by scripts to show you the changes.
 
 ####Introduction with Meteor.js:
 
-* This year while working with on a project I came across a new framework i.e. <a href="https://www.meteor.com/" target="_blank">Meteor</a>. Its an awesome JS framework but one thing that I loved was `live reload`. 
+* This year while working with on a project I came across a new framework i.e. <a href="https://www.meteor.com/" target="_blank">Meteor</a>. Its an awesome JS framework but one thing that I loved was `live reload`.
 
 * After checking out that Meteor thing I thought it would be great if I can do the same with Rails so tried out.
 
-* Live Reload works this way, you just change the code of view part and voila it updates automatically in the browser you don't need to reload your browser tab. 
+* Live Reload works this way, you just change the code of view part and voila it updates automatically in the browser you don't need to reload your browser tab.
 
 * If you change some `.erb|.haml|.slim` template it will reload automacially.
 
@@ -67,10 +68,10 @@ title: Live Reload in Rails
 
 * Once you click on the plugin on the console it should show `browser is connected`.
 
-* Yeeeey that's all you need to do now hack your code without even bothering about reloading it after every small change. 
+* Yeeeey that's all you need to do now hack your code without even bothering about reloading it after every small change.
 
 * Go and change any JS/CSS or *.erb file it will reload the browser page and JS and CSS will be reloaded without even reloading the page.
 
-PS: There is a <a href="http://livereload.com/" target="_blank"> Livereload app</a> for Mac as well, Its paid but yeah its faster than this setup. :) 
+PS: There is a <a href="http://livereload.com/" target="_blank"> Livereload app</a> for Mac as well, Its paid but yeah its faster than this setup. :)
 
 
