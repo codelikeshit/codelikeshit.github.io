@@ -3,9 +3,9 @@ layout: post
 title: Live Reload in Rails
 ---
 
-###Live Reload is basically updating your stylesheets and views when you are changing your files without reloading. Its a great way to be more productive while you just need to focus on your code and rest is handled by scripts to show you the changes.
+### Live Reload is basically updating your stylesheets and views when you are changing your files without reloading. Its a great way to be more productive while you just need to focus on your code and rest is handled by scripts to show you the changes.
 
-####Introduction with Meteor.js:
+#### Introduction with Meteor.js:
 
 * This year while working with on a project I came across a new framework i.e. <a href="https://www.meteor.com/" target="_blank">Meteor</a>. Its an awesome JS framework but one thing that I loved was `live reload`.
 
@@ -17,7 +17,7 @@ title: Live Reload in Rails
 
 * Here is the guide how you can remove this hassle of reloading browsers again and again.
 
-####Dependencies:
+#### Dependencies:
 
 * I hope most of us know about <a href="https://github.com/guard/guard" target="_blank"> Guard Gem </a>. I use it for running rspec tests on any content changes.
 
@@ -25,7 +25,7 @@ title: Live Reload in Rails
 
 * You need to install the <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en" target="_blank">Live reload chrome plugin.</a>
 
-####Setup Steps:
+#### Setup Steps:
 
 * Add the following content in your Gemfile
 

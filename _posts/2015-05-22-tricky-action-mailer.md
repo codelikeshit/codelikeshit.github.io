@@ -4,21 +4,21 @@ title: Tricky Rails Mailer
 tags: [Rails, Ruby, ActionMailer]
 ---
 
-###How Rails ActionMailer trick methods
+### How Rails ActionMailer trick methods
 
 
 * <a href="http://guides.rubyonrails.org/action_mailer_basics.html" target="_blank">ActionMailer</a> in Rails, yooo its awesome it do tons of stuff and makes my life easy while it comes to sending email from Rails app.
 
 * If you don't know much about it, you should check <a href="http://guides.rubyonrails.org/action_mailer_basics.html" target="_blank">ActionMailer guide</a> as well, explained pretty well.
 
-* ###A bulb flashed ;) :-
+* ### A bulb flashed ;) :-
 
 
     * I was writing some code to send emails after user signs up:-
 
     Model class:-
 
-      ```
+    ```
     class User < ActiveRecord::Base
 
       after_commit :notify_user, on: :create
@@ -28,10 +28,10 @@ tags: [Rails, Ruby, ActionMailer]
       end
 
     end
-      ```
-      Mailer class:-
+    ```
+    Mailer class:-
 
-      ```
+    ```
     class MyAwesomeMailer < ActionMailer::Base
 
       def send_welcome_email(_user, _message)
@@ -40,11 +40,11 @@ tags: [Rails, Ruby, ActionMailer]
       end
 
     end
-      ```
+    ```
 
-    * All of sudden a bulb flashed over my head and I realized ```send_welcome_email``` is an ```instance method``` and I called a ```class method here```. 
-    
-    ``` 
+    * All of sudden a bulb flashed over my head and I realized ```send_welcome_email``` is an ```instance method``` and I called a ```class method here```.
+
+    ```
       MyAwesomeMailer.send_welcome_email(self, "Welcome to Interakt.co").deliver_now
     ```
     * I was confused and asked from couple of my senior but didn't get exact answer, one tried to guess and said it might be using ```method_missing``` hook of Ruby.
@@ -67,12 +67,12 @@ tags: [Rails, Ruby, ActionMailer]
 * ### Make class method private:-
 
     * Rails mark new method of mailer as ```private method``` so you can't call it using dot(.) operator.
-    
+
     * Another thing that I analyzed was new is a ```class method``` and if I use ```private``` or ```protected``` it will not work for class methods.
 
     e.g:-
 
-      ```
+    ```
 
       class MyAwesomeClass
 
@@ -92,7 +92,7 @@ tags: [Rails, Ruby, ActionMailer]
 
       MyAwesomeClass.my_class_method
       ==> I am still public method
-      ```
+    ```
 
     * Callling ```MyAwesomeClass.my_class_method``` and it will work and its not a private method, it cleary indicates its not set as private method. Now the question is how to make class level methods private.
 
@@ -105,13 +105,13 @@ tags: [Rails, Ruby, ActionMailer]
 
     It makes class methods private and Rails use it all the time.
 
-* ###Getting the idea:-
+* ### Getting the idea:-
 
     * Coming back to our point when I call a class method how it calls the instance method with the same name.
 
     * Finally after messing my head around for some time I got the answer and that is its basically using ```method_missing``` hook of ruby and doing the stuff in backend.
 
-* ###Flow(How it works internally):-
+* ### Flow(How it works internally):-
 
     * When you call a class method e.g:-
 
@@ -138,7 +138,7 @@ tags: [Rails, Ruby, ActionMailer]
 
     end
     ```
-    
+
     * In code about that method is not called but created new object of MessageDelivery and yeah you guessed it right that class is doing the whole stuff, have a look on code:-
 
     ```
@@ -169,7 +169,7 @@ tags: [Rails, Ruby, ActionMailer]
     * Here after initializing the object, when you call ```deliver_now``` to deliver your email and it calls message method wich call ```__getobj__``` method.
 
 
-    ```  
+    ```
     def __getobj__ #:nodoc:
       @obj ||= @mailer.send(:new, @mail_method, *@args).message
     end

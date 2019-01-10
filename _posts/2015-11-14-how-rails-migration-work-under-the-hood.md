@@ -3,7 +3,7 @@ layout: post
 title: Magical Rails migrations
 ---
 
-###Rails migration is one of the best tools provided in Rails that helps you to handle database very efficiently. Here I am gonna add some internal stuff that Rails do under the hood.
+### Rails migration is one of the best tools provided in Rails that helps you to handle database very efficiently. Here I am gonna add some internal stuff that Rails do under the hood.
 
 * Rails migration I feel is a great tool to manage your db schema, It always work like charm and make my life very comfortable to deal with db.
 
@@ -22,7 +22,7 @@ title: Magical Rails migrations
     ```
 
 
-##Scratching Head:
+## Scratching Head:
 
 * You ran some command in terminal, it generated a file and on running `rake db:migrate` it create all those columns in your database. It feels like `magic`, no?
 
@@ -30,7 +30,7 @@ title: Magical Rails migrations
 
 * I have seen other developers working on other framworks and its a pain in the ass to handle db changes, they used to take db dumps, share it within team and in Rails it works without any effort this thing increased the curiosity to many folds.
 
-##Digging down:
+## Digging down:
 
 * What Rails do is, when you try to create some migration file it take the UTC timestamp and put that in filename e.g:- if this is filename `20150714204601_add_username_to_users` `20150714204601` is timestamp.
 
@@ -49,7 +49,7 @@ title: Magical Rails migrations
     ```
 
 
-##Eureka moment ;)
+## Eureka moment ;)
 
 * And that eureka moment arrived when I find out that basically what Rails does is it keeps the file timestamp in this `schema_migration` and whenever we run `rake db:migrate` it checks if there is any other file whose time stamp is not there in the table it pass that file to parser.
 

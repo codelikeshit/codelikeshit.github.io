@@ -3,7 +3,7 @@ layout: post
 title: Calling Ruby methods various ways.
 ---
 
-###Calling methods for a object other than `dot operator`.
+### Calling methods for a object other than `dot operator`.
 
 Sample class:
 
